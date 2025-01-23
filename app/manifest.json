@@ -1,0 +1,36 @@
+{
+  "name": "SasS POS Market App",
+  "short_name": "PWA App",
+  "icons": [
+    {
+      "src": "/assets/icons/store-icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/assets/icons/store-icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0000FF",
+  "background_color": "#22A7AA",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "screenshots": [
+    {
+      "src": "/assets/screenshots/light (1).png",
+      "sizes": "1200x900",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/assets/screenshots/light (2).png",
+      "sizes": "1200x900",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ]
+}

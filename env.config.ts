@@ -8,11 +8,11 @@ const envSchema = z.object({
     NEXT_PUBLIC_APP_URL: z.string().url(),
     NEXT_PUBLIC_TEST_USER_EMAIL: z.string().email().default("test@test.com"),
     NEXT_PUBLIC_TEST_USER_PASSWORD: z.string().default("password"),
-    RESEND_API_KEY: z.string(),
     EMAIL_HOST: z.string().default("store-POS <service-email@resend.dev"),
     AUTH_SECRET: z.string(),
-    GOOGLE_CLIENT_ID: z.string(),
-    GOOGLE_CLIENT_SECRET: z.string(),
+    RESEND_API_KEY: z.string().optional(),
+    GOOGLE_CLIENT_ID: z.string().optional(),
+    GOOGLE_CLIENT_SECRET: z.string().optional(),
 });
 
 // Validar las variables de entorno

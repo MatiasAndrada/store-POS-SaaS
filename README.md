@@ -28,14 +28,28 @@ Store POS SaaS is a cloud-based Point of Sale (POS) system designed for retail s
     ```bash
     npm install
     ```
-
 ### Usage
-1. Start the development server:
+1. Change name of the `env.example.txt` file to `.env` and fill in the required environment variables.
+3. Run docker-compose to start the database:
     ```bash
-    npm start
+    docker-compose up
     ```
-2. Open your browser and navigate to `http://localhost:3000`.
-
+4. Generate Prisma client:
+    ```bash
+    npx prisma generate && npx prisma db push
+    ```
+5. Seed the database:
+    ```bash
+    npm run seed
+    ```
+6. Start the development server:
+    ```bash
+    npm run dev
+    ```
+#### Credentials for testing
+  - Email: test@test.com
+  - Password: password
+****
 ## Contributing
 Please read the [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests.
 

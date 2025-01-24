@@ -67,7 +67,7 @@ async function main() {
     } else {
       console.log(`The store already exists`);
     }
-
+    console.log("Seed data inserted successfully");
   } catch (e: any) {
     console.error(e);
     process.exit(1);

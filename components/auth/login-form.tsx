@@ -8,11 +8,7 @@ import { useState, useTransition } from "react";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginSchema } from "@/schemas/auth";
-/* import {
-  NODE_ENV,
-  NEXT_PUBLIC_TEST_USER_EMAIL,
-  NEXT_PUBLIC_TEST_USER_PASSWORD,
-} from "@/env.config"; */
+import { useEnv } from "@/context/EnvContextProvider";
 //components
 import { Social } from "./OAuth-buttons";
 //ui
@@ -27,6 +23,8 @@ import { Alert } from "@nextui-org/react";
 import { login } from "@/actions/login";
 
 export const LoginForm = () => {
+  const { nodeEnv } = useEnv();
+  const isDevelopment = nodeEnv === "development";
   const searchParams = useSearchParams();
   const callbackUrl = searchParams?.get("callbackUrl");
   const urlError =
@@ -71,37 +69,6 @@ export const LoginForm = () => {
         .catch(() => setError("Something went wrong"));
     });
   };
-  /* 
-  const onSubmitTestUser = () => {
-    setError("");
-    setSuccess("");
-    const values = {
-      email: process.env.NEXT_PUBLIC_TEST_USER_EMAIL || "test@projectAdmin.com",
-      password: process.env.NEXT_PUBLIC_TEST_USER_PASSWORD || "password",
-    };
-    form.setValue("email", values.email);
-    form.setValue("password", values.password);
-    startTransition(() => {
-      login(values, callbackUrl)
-        .then((data) => {
-          if (data?.error) {
-            form.reset();
-            setError(data.error);
-          }
-
-             if (data?.success) {
-            form.reset();
-            setSuccess(data.success);
-          }
-
-          if (data?.twoFactor) {
-            setShowTwoFactor(true);
-          }
-        })
-        .catch(() => setError("Something went wrong"));
-    });
-  }; */
-
   return (
     <Card className="w-[400px] p-4" shadow="md">
       <CardHeader className="flex flex-col items-center gap-4">
@@ -163,6 +130,21 @@ export const LoginForm = () => {
           <Button disabled={isPending} type="submit" className="w-full">
             {showTwoFactor ? "Confirm" : "Login"}
           </Button>
+          {isDevelopment && (
+            <Button
+              disabled={isPending}
+              onPress={() =>
+                onSubmit({
+                  email: process.env.NEXT_PUBLIC_TEST_USER_EMAIL as string,
+                  password: process.env
+                    .NEXT_PUBLIC_TEST_USER_PASSWORD as string,
+                })
+              }
+              className="w-full"
+            >
+              Login with test user
+            </Button>
+          )}
           {!showTwoFactor && (
             <>
               <div className="flex items-center gap-4 py-2">
@@ -186,21 +168,6 @@ export const LoginForm = () => {
           </Link>
         </NextLink>
       </CardFooter>
-
-      {/*       {NODE_ENV === "development" && (
-        <Button
-          disabled={isPending}
-          onPress={() =>
-            onSubmit({
-              email: NEXT_PUBLIC_TEST_USER_EMAIL,
-              password: NEXT_PUBLIC_TEST_USER_PASSWORD,
-            })
-          }
-          className="w-full"
-        >
-          Login with test user
-        </Button>
-      )} */}
     </Card>
   );
 };

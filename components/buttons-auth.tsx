@@ -32,7 +32,7 @@ export const LogoutButton = () => {
       onPress={() => signOut()}
       startContent={<PowerIcon />}
     >
-      <span>Cerrar sesión</span>
+      Cerrar sesión
     </Button>
   );
 };

@@ -1,6 +1,8 @@
 import "./globals.css";
 /* import type { Metadata } from "next"; */
-import { UIProvider } from "./providers";
+import { UIProvider } from "../context/UIProvider";
+import { SessionProvider } from "next-auth/react";
+import { EnvProvider } from "@/context/EnvContextProvider";
 
 export default function RootLayout({
   children,
@@ -9,9 +11,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="dark">
-      <body className={` antialiased text-black dark:text-white`} id="main_layout"
+      <body
+        className={` antialiased text-black dark:text-white`}
+        id="main_layout"
       >
-        <UIProvider>{children}</UIProvider>
+        <EnvProvider>
+          <SessionProvider>
+            <UIProvider>{children}</UIProvider>
+          </SessionProvider>
+        </EnvProvider>
       </body>
     </html>
   );

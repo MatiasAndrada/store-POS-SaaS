@@ -1,4 +1,4 @@
-import { currentUser } from "./use-current-user";
+/* import { currentUser } from "./use-current-user";
 import { db } from "@/lib/db";
 
 export const currentProject = async () => {
@@ -24,4 +24,4 @@ export const currentProjectId = async () => {
     const current_project_id = user?.currentProject?.project_id;
     if (!current_project_id) throw new Error("No current project found.");
     return current_project_id;
-}
+} */

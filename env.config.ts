@@ -3,13 +3,14 @@ import { z } from 'zod';
 // Definir el esquema de validación usando zod
 const envSchema = z.object({
     NODE_ENV: z.enum(['development', 'production', 'test']),
-    DATABASE_URL: z.string().url(),
-    DIRECT_URL: z.string().url(),
-    NEXT_PUBLIC_APP_URL: z.string().url(),
+    NEXT_PUBLIC_NODE_ENV: z.enum(['development', 'production', 'test']).default("development"),
+    DATABASE_URL: z.string().url().nonempty(),
+    DIRECT_URL: z.string().url().nonempty(),
+    NEXT_PUBLIC_APP_URL: z.string().url().nonempty(),
     NEXT_PUBLIC_TEST_USER_EMAIL: z.string().email().default("test@test.com"),
     NEXT_PUBLIC_TEST_USER_PASSWORD: z.string().default("password"),
     EMAIL_HOST: z.string().default("store-POS <service-email@resend.dev"),
-    AUTH_SECRET: z.string(),
+    AUTH_SECRET: z.string().nonempty(),
     RESEND_API_KEY: z.string().optional(),
     GOOGLE_CLIENT_ID: z.string().optional(),
     GOOGLE_CLIENT_SECRET: z.string().optional(),
@@ -26,6 +27,7 @@ if (!env.success) {
 // Exportar las variables de entorno validadas como constantes
 export const {
     NODE_ENV,
+    NEXT_PUBLIC_NODE_ENV,
     DATABASE_URL,
     DIRECT_URL,
     NEXT_PUBLIC_APP_URL,

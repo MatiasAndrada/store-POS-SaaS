@@ -1,13 +1,4 @@
 {
-  "cSpell.words": [
-    "cuid",
-    "datasource",
-    "libsql",
-    "nextui",
-    "precache",
-    "Precache",
-    "serwist",
-    "Serwist",
-    "TURSO"
-  ]
+  "cSpell.words": ["nextui"],
+  "JT-View-Exports-SVG.assetsPath": ["components\\ui\\icons\\icons.tsx"]
 }

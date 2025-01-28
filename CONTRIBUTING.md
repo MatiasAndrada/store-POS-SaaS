@@ -27,6 +27,11 @@ If you have an idea for a new feature, please open an issue [here](https://githu
     ```
 6. Open a pull request [here](https://github.com/yourusername/store-POS-SaaS/pulls).
 
+### Addressing TODO Comments
+1. Search for comments starting with `TODO` in the codebase.
+2. Create an issue [here](https://github.com/yourusername/store-POS-SaaS/issues) describing the TODO item.
+3. Follow the steps in "Submitting Pull Requests" to address the TODO item and link the issue in your pull request.
+
 ## Code of Conduct
 Please read our [Code of Conduct](CODE_OF_CONDUCT.md) to understand the standards we expect from our community.
 

@@ -30,6 +30,7 @@ model User {
   currentStore          UsersOnStores?         @relation("userCurrentStore", fields: [currentStoreId], references: [id])
   createdAt             DateTime               @default(now())
   updatedAt             DateTime               @default(now()) @updatedAt
+  EmployeeSchedule      EmployeeSchedule[]
 }
 
 model Account {
@@ -121,14 +122,30 @@ model StoreSchedule {
 }
 
 model UsersOnStores {
-  id           String   @id @unique @default(cuid())
-  userId       String
-  storeId      String
-  user         User     @relation("userStores", fields: [userId], references: [id], onDelete: Cascade)
-  store        Store    @relation(fields: [storeId], references: [id], onDelete: Cascade)
-  currentUsers User[]   @relation("userCurrentStore")
-  role         String
-  createdAt    DateTime @default(now())
+  id               String             @id @unique @default(cuid())
+  userId           String
+  storeId          String
+  user             User               @relation("userStores", fields: [userId], references: [id], onDelete: Cascade)
+  store            Store              @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  currentUsers     User[]             @relation("userCurrentStore")
+  role             String
+  createdAt        DateTime           @default(now())
+  EmployeeSchedule EmployeeSchedule[]
+}
+
+model EmployeeSchedule {
+  id              String        @id @unique @default(cuid())
+  usersOnStoresId String
+  usersOnStores   UsersOnStores @relation(fields: [usersOnStoresId], references: [id], onDelete: Cascade)
+  day             Int // 0 = Monday, 1 = Tuesday, 2 = Wednesday, 3 = Thursday, 4 = Friday, 5 = Saturday, 6 = Sunday
+  firstOpen       DateTime
+  firstClose      DateTime
+  secondOpen      DateTime?
+  secondClose     DateTime?
+  User            User?         @relation(fields: [userId], references: [id])
+  userId          String?
+
+  @@unique([usersOnStoresId, day]) // avoid duplicate schedules for the same day
 }
 
 enum Visibility {

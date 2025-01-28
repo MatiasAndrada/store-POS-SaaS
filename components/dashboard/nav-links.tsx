@@ -9,6 +9,7 @@ import {
   SaleIcon,
   InventoryIcon,
   UserGroupIcon,
+  SquaresIcon,
 } from "../ui/icons/icons";
 
 // Map of links to display in the side navigation.
@@ -20,10 +21,17 @@ interface Link {
   state?: "disabled";
 }
 
+//TODO: Before development, dropdown for select current store and show the store name in the top of the sidenav
 const links: Link[] = [
+  /*
+  {
+    name: "Negocios",
+    href: "/stores",
+    icon: SquaresIcon,
+  },*/
   {
     name: "Panel",
-    /*     href: "/dashboard", */
+    href: "/dashboard",
     icon: GraphIcon,
   },
   {
@@ -38,7 +46,7 @@ const links: Link[] = [
   },
   {
     name: "Personal",
-    /*     href: "/dashboard/members", */
+    href: "/dashboard/employees",
     icon: UserGroupIcon,
   },
 ];

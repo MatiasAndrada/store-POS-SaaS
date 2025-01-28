@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Metadata } from "next";
-import { NextUIProvider } from "@/context/NextUIProvider";
-import { currentProject } from "@/hooks/use-current-project";
+import { UIProvider } from "@/context/UIProvider";
+import { currentStore } from "@/hooks/use-current-store";
 import { Loader1 } from "@/components/loaders";
 
 export const metadata: Metadata = {
@@ -18,21 +18,22 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
 }) {
-  const project = await currentProject();
+  const store = await currentStore();
+  console.log("store", store);
   return (
     <>
-      {project === undefined ? (
+      {store === undefined ? (
         <div className="flex items-center justify-center h-screen w-full mx-auto">
           <h3 className="text-2xl text-red-500 h-32">
-            First you must select a project!
+            Primero selecciona una tienda para continuar.
           </h3>
         </div>
       ) : (
         <div /* className="h-screen flex-grow md:overflow-y-auto  p-6 md:p-12" */
         >
-          <NextUIProvider>
+          <UIProvider>
             <Suspense fallback={<Loader1 />}>{children}</Suspense>
-          </NextUIProvider>
+          </UIProvider>
         </div>
       )}
     </>

@@ -97,13 +97,27 @@ model TwoFactorConfirmation {
 }
 
 model Store {
-  id        String          @id @unique @default(cuid())
-  name      String
-  createdAt DateTime        @default(now())
-  updatedAt DateTime        @default(now()) @updatedAt
-  staff     UsersOnStores[]
-  products  Product[]
-  sales     Sale[]
+  id            String          @id @unique @default(cuid())
+  name          String
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @default(now()) @updatedAt
+  staff         UsersOnStores[]
+  products      Product[]
+  sales         Sale[]
+  StoreSchedule StoreSchedule[]
+}
+
+model StoreSchedule {
+  id          String    @id @unique @default(cuid())
+  storeId     String
+  store       Store     @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  day         Int // 0 = Monday, 1 = Tuesday, 2 = Wednesday, 3 = Thursday, 4 = Friday, 5 = Saturday, 6 = Sunday
+  firstOpen   DateTime
+  firstClose  DateTime
+  secondOpen  DateTime?
+  secondClose DateTime?
+
+  @@unique([storeId, day]) // avoid duplicate schedules for the same day
 }
 
 model UsersOnStores {

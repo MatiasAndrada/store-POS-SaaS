@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import NavLinks from "@/components/dashboard/nav-links";
 /* import { DropDownProjects } from "@/components/dashboard/dropdown-projects"; */
 import { IconWithText } from "@/components/logo";
@@ -7,18 +5,18 @@ import ThemeToggle from "@/components/theme-toggle";
 import { LogoutButton } from "@/components/buttons-auth";
 
 import { fetchStores } from "@/data/store";
-import { currentProject } from "@/hooks/use-current-project";
+/* import { currentProject } from "@/hooks/use-current-project"; */
 
 export default async function SideNav() {
-  const [stores, project] = await Promise.all([
+  const [stores /* , project */] = await Promise.all([
     fetchStores(),
-    currentProject(),
+    /*     currentProject(), */
   ]); //Peticiones en paralelo
   return (
     <div className=" h-screen w-full bg-gray-400 dark:bg-slate-900  flex flex-col gap-2">
       <div className=" bg-blue-500 p-2 flex flex-col h-fit items-center justify-around gap-4">
         <div className="pt-2 flex flex-row items-center gap-1 justify-around w-full">
-          <IconWithText redirect="/projects" />
+          <IconWithText redirect="/dashboard" />
           <ThemeToggle />
         </div>
         {/*         <DropDownProjects items={stores} selectedProject={project} /> */}

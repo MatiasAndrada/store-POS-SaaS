@@ -1,6 +1,5 @@
 import { Suspense } from "react";
 import { Metadata } from "next";
-import { UIProvider } from "@/context/UIProvider";
 import { currentStore } from "@/hooks/use-current-store";
 import { Loader1 } from "@/components/loaders";
 
@@ -31,9 +30,7 @@ export default async function Layout({
       ) : (
         <div /* className="h-screen flex-grow md:overflow-y-auto  p-6 md:p-12" */
         >
-          <UIProvider>
-            <Suspense fallback={<Loader1 />}>{children}</Suspense>
-          </UIProvider>
+          <Suspense fallback={<Loader1 />}>{children}</Suspense>
         </div>
       )}
     </>

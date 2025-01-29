@@ -49,6 +49,11 @@ const links: Link[] = [
     href: "/dashboard/employees",
     icon: UserGroupIcon,
   },
+  {
+    name: "Ajustes de negocio",
+    href: "/dashboard/business-settings",
+    icon: UserGroupIcon,
+  },
 ];
 
 export default function NavLinks() {

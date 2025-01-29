@@ -1,7 +1,5 @@
-import Link from "next/link";
-/* import { currentUser } from "@/hooks/use-current-user";*/
+import { currentUser } from "@/hooks/use-current-user";
 import SideNav from "@/components/dashboard/sidenav";
-import { LogoutButton } from "@/components/buttons-auth";
 /* import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"; */
 /* import {
   DropdownMenu,
@@ -20,7 +18,8 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
 }) {
-  /*   const user = await currentUser(); */
+  const user = await currentUser();
+  //TODO: BUG - re-rendering SideNav component
   return (
     <section>
       <Toaster richColors />
@@ -31,8 +30,8 @@ export default async function Layout({
         <div className="h-screen relative flex-grow p-6 md:overflow-y-auto ">
           <div className="absolute top-3 right-3 flex items-center justify-end gap-2 ">
             <h2 className="text-lg font-medium md:text-xl">
-              {/*               Hi!
-              {user && ` ${user.name}`} */}
+              Hola
+              {user && ` ${user.name}`}
             </h2>
             {/*   <DropdownMenu>
               <DropdownMenuTrigger>

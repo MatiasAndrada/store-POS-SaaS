@@ -1,7 +1,8 @@
 import { StoreSchedule } from "@/components/dashboard/business-settings/ScheduleStore";
+
 export default function Page() {
   // TODO: display and edit fields as name, address, phone
-  //TODO: display and edit schedule of the business
+  // TODO: display and edit schedule of the business
   return (
     <main>
       <h1>Business Settings</h1>

@@ -16,8 +16,7 @@
     "types": [
       // Other types...
       // This allows Serwist to type `window.serwist`.
-      "node",
-      "@serwist/next/typings"
+      "node"
     ],
     "plugins": [
       {
@@ -29,5 +28,5 @@
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", "public/sw.js"]
+  "exclude": ["node_modules"]
 }

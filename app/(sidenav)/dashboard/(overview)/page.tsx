@@ -7,11 +7,7 @@ import { Suspense } from "react";
 } from "@/components/skeletons"; */
 import { Loader1 } from "@/components/loaders";
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams?: { query?: string; page?: string };
-}) {
+export default async function Page() {
   return (
     <main className="space-y-4">
       <h1 className="text-4xl"> Dashboard</h1>

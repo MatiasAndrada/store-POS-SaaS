@@ -52,7 +52,7 @@ const links: Link[] = [
   {
     name: "Ajustes de negocio",
     href: "/dashboard/business-settings",
-    icon: UserGroupIcon,
+    icon: SquaresIcon,
   },
 ];
 
@@ -64,7 +64,12 @@ export default function NavLinks() {
       {links.map((link) => {
         const LinkIcon = link.icon;
         return (
-          <Link key={link.name} className="" href={link.href || "#"}>
+          <Link
+            key={link.name}
+            className=""
+            href={link.href || "#"}
+            legacyBehavior // Prevents full page reload
+          >
             <Button
               size="lg"
               variant="shadow"

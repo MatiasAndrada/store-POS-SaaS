@@ -12,6 +12,7 @@ export default async function SideNav() {
     fetchStores(),
     /*     currentProject(), */
   ]); //Peticiones en paralelo
+  console.log(stores);
   return (
     <div className=" h-screen w-full bg-gray-400 dark:bg-slate-900  flex flex-col gap-2">
       <div className=" bg-blue-500 p-2 flex flex-col h-fit items-center justify-around gap-4">

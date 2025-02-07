@@ -1,6 +1,6 @@
 "use server";
 
-import  db from "@/lib/db";
+import db from "@/lib/db";
 import * as z from "zod";
 import { RegisterSchema } from "@/schemas/auth";
 import bcrypt from "bcryptjs";
@@ -33,7 +33,6 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
   });
 
   const verificationToken = await generateVerificationToken(email);
-  console.log("🦇  register  verificationToken:", verificationToken)
   await sendVerificationEmail(
     verificationToken.email,
     verificationToken.token,

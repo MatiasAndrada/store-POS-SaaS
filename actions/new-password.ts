@@ -1,6 +1,6 @@
 "use server";
 
-import  db  from "@/lib/db";
+import db from "@/lib/db";
 import * as z from "zod";
 import bcrypt from "bcryptjs";
 

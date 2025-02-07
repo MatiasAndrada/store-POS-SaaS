@@ -68,7 +68,6 @@ export const sendVerificationEmail = async (
       subject: "Confirm your email",
       html: emailHtml,
     });
-    console.log("🦇  res:", res);
   } catch (error) {
     console.error("Error sending verification email:", error);
   }

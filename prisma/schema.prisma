@@ -128,7 +128,7 @@ model UsersOnStores {
   user             User               @relation("userStores", fields: [userId], references: [id], onDelete: Cascade)
   store            Store              @relation(fields: [storeId], references: [id], onDelete: Cascade)
   currentUsers     User[]             @relation("userCurrentStore")
-  role             String
+  role             Role               @default(seller)
   createdAt        DateTime           @default(now())
   EmployeeSchedule EmployeeSchedule[]
 }
@@ -155,6 +155,7 @@ enum Visibility {
 
 enum Role {
   owner
+  partner
   admin
   seller
 }

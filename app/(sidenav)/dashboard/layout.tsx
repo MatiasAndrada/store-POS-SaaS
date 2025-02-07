@@ -18,11 +18,11 @@ export default async function Layout({
   children: React.ReactNode;
 }) {
   const store = await currentStore();
-  console.log("store", store);
+
   return (
     <>
       {store === undefined ? (
-        <div className="flex items-center justify-center h-screen w-full mx-auto">
+        <div className="flex items-center justify-center h-screen w-full mx-auto  ">
           <h3 className="text-2xl text-red-500 h-32">
             Primero selecciona una tienda para continuar.
           </h3>

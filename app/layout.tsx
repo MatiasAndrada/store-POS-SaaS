@@ -12,7 +12,7 @@ export default function RootLayout({
   return (
     <html lang="es" className="dark">
       <body
-        className={` antialiased text-black dark:text-white`}
+        className={` antialiased bg-gray-500 dark:bg-slate-950 text-white dark:text-white`}
         id="main_layout"
       >
         <EnvProvider>

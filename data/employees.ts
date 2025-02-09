@@ -1,11 +1,12 @@
+"use server";
 import db from "@/lib/db";
 import { currentStoreId } from "@/hooks/use-current-store";
 import { Prisma } from "@prisma/client";
 
-export async function getAllEmployees(params: Prisma.UsersOnStoresFindManyArgs) {
+export async function getAllEmployees<T extends Prisma.UsersOnStoresFindManyArgs>(
+    params: T
+): Promise<Prisma.UsersOnStoresGetPayload<T>[]> {
     try {
-        console.log("🦇  select:", params.select);
-
         // Obtener el storeId, respetando el proporcionado en where
         const storeId = params.where?.storeId ?? (await currentStoreId());
 
@@ -24,7 +25,7 @@ export async function getAllEmployees(params: Prisma.UsersOnStoresFindManyArgs) 
         // Ejecutar la consulta con los parámetros recibidos
         const employees = await db.usersOnStores.findMany({ ...params, where });
 
-        return employees;
+        return employees as Prisma.UsersOnStoresGetPayload<T>[];
     } catch (e: any) {
         console.error(e);
         throw new Error("An error occurred while fetching employees");

@@ -50,6 +50,16 @@ const links: Link[] = [
     icon: UserGroupIcon,
   },
   {
+    name: "Horarios del personal",
+    href: "/dashboard/schedules-employees",
+    icon: UserGroupIcon,
+  },
+  {
+    name: "Horarios de negocio",
+    href: "/dashboard/schedules-store",
+    icon: SquaresIcon,
+  },
+  {
     name: "Ajustes de negocio",
     href: "/dashboard/business-settings",
     icon: SquaresIcon,

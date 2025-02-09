@@ -7,7 +7,7 @@ import { WeekSchedule } from "./WeekSchedule";
 import {
   DaySchedule,
   WeekSchedule as WeekScheduleType,
-} from "../../../types/dashboard/Schedules";
+} from "@/types/dashboard/Schedules";
 
 export function StoreSchedule() {
   const [schedule, setSchedule] = useState<DaySchedule[]>(
@@ -20,31 +20,17 @@ export function StoreSchedule() {
       endTime2: "",
     })
   );
-
-  const [weekSchedule, setWeekSchedule] = useState<WeekScheduleType>({
-    weekdays: {
-      startTime1: "",
-      endTime1: "",
-      startTime2: "",
-      endTime2: "",
-    },
-    weekends: {
-      startTime1: "",
-      endTime1: "",
-      startTime2: "",
-      endTime2: "",
-    },
-  });
+  console.log("🦇  StoreSchedule  schedule:", schedule);
 
   const updateDaySchedule = (day: DaySchedule, index: number) => {
     if (!day.custom) {
       const isWeekday = index < 5;
       const scheduleType = isWeekday
-        ? weekSchedule.weekdays
-        : weekSchedule.weekends;
+        ? schedule[0] // Assuming the first element is the weekday schedule
+        : schedule[6]; // Assuming the last element is the weekend schedule
       return {
         ...day,
-        enabled: Object.values(scheduleType).some((time) => time),
+        ...scheduleType,
         ...scheduleType,
       };
     }
@@ -54,7 +40,30 @@ export function StoreSchedule() {
   const handleSave = () => {
     const updatedSchedule = schedule.map(updateDaySchedule);
     setSchedule(updatedSchedule);
-    console.log("Horario guardado:", { updatedSchedule, weekSchedule });
+    console.log("Horario guardado:", { updatedSchedule });
+  };
+
+  const weekSchedule = {
+    weekdays: schedule[0],
+    weekends: schedule[6],
+  };
+
+  const setWeekSchedule = (
+    value: WeekScheduleType | ((prev: WeekScheduleType) => WeekScheduleType)
+  ) => {
+    setSchedule((prev) => {
+      const newWeekSchedule =
+        typeof value === "function"
+          ? value({
+              weekdays: prev[0],
+              weekends: prev[6],
+            })
+          : value;
+      const newSchedule = [...prev];
+      newSchedule[0] = { ...newSchedule[0], ...newWeekSchedule.weekdays };
+      newSchedule[6] = { ...newSchedule[6], ...newWeekSchedule.weekends };
+      return newSchedule;
+    });
   };
 
   return (

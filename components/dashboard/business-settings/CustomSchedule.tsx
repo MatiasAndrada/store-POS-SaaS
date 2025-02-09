@@ -87,7 +87,7 @@ export function CustomSchedule({ schedule, setSchedule }: CustomScheduleProps) {
     <Card className="p-4">
       <CardHeader className="text-center">
         <h2 className="text-xl font-bold">
-          Configurar horarios de atención personalizados por día
+          Configurar horarios de atención por día
         </h2>
       </CardHeader>
       <CardBody>
@@ -111,15 +111,19 @@ export function CustomSchedule({ schedule, setSchedule }: CustomScheduleProps) {
               </div>
               {schedule[index].enabled && !schedule[index].custom && (
                 <div className="mt-2">
-                  <p>
-                    {schedule[index].startTime1} - {schedule[index].endTime1}{" "}
-                    {schedule[index].startTime2 && (
-                      <>
-                        y {schedule[index].startTime2} -{" "}
-                        {schedule[index].endTime2}
-                      </>
-                    )}
-                  </p>
+                  {schedule[index].startTime1 || schedule[index].endTime1 ? (
+                    <p>
+                      {schedule[index].startTime1} - {schedule[index].endTime1}{" "}
+                      {schedule[index].startTime2 && (
+                        <>
+                          y {schedule[index].startTime2} -{" "}
+                          {schedule[index].endTime2}
+                        </>
+                      )}
+                    </p>
+                  ) : (
+                    <p>Cerrado</p>
+                  )}
                 </div>
               )}
               {schedule[index].custom && renderTimeInputs(index)}

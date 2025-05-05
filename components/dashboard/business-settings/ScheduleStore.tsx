@@ -38,6 +38,7 @@ export function StoreSchedule() {
   };
 
   const handleSave = () => {
+    //TODO: Save schedule to the database
     const updatedSchedule = schedule.map(updateDaySchedule);
     setSchedule(updatedSchedule);
     console.log("Horario guardado:", { updatedSchedule });

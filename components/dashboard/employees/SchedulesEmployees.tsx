@@ -58,7 +58,13 @@ export function SchedulesEmployees({
     if (title) {
       setEvents([
         ...events,
-        { id: events.length + 1, title, start, end, resourceId },
+        {
+          id: events.length + 1,
+          title,
+          start,
+          end,
+          resourceId: String(resourceId),
+        },
       ]);
     }
   };

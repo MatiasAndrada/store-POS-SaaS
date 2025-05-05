@@ -4,14 +4,14 @@ import { IconWithText } from "@/components/logo";
 import ThemeToggle from "@/components/theme-toggle";
 import { LogoutButton } from "@/components/buttons-auth";
 
-import { fetchStores } from "@/data/store";
+/* import { fetchStores } from "@/data/store"; */
 /* import { currentProject } from "@/hooks/use-current-project"; */
 
 export default async function SideNav() {
-  const [stores /* , project */] = await Promise.all([
+  /*   const [stores , project] = await Promise.all([
     fetchStores(),
-    /*     currentProject(), */
-  ]); //Peticiones en paralelo
+        currentProject(),
+  ]); */ //Peticiones en paralelo
   return (
     <div className=" h-screen w-full bg-gray-400 dark:bg-slate-900  flex flex-col gap-2">
       <div className=" bg-blue-500 p-2 flex flex-col h-fit items-center justify-around gap-4">

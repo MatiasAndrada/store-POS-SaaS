@@ -15,7 +15,7 @@ import type { NextConfig } from "next";
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
-  basePath: "https://store-pos-saas-production.up.railway.app/",
+  basePath: "/store-pos-saas-production.up.railway.app",
   reactStrictMode: true, // Su función es asegurarse de que no se usen funciones obsoletas de React.
 };
 
